@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="abs-center">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body text-center" *ngFor="let card of cars;">
+                        <img [src]="card.photo" width="400px" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body text-center" *ngFor="let card of cars;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Color</th>
+                                    <th scope="col">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let card of cars; let i = index">
+                                    <td class="pl-4">{{card.model}}</td>
+                                    <td>{{card.type}}</td>
+                                    <td>{{card.color}}</td>
+                                    <td>${{card.price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mx-auto mt-4 d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-body text-center" *ngFor="let card of cars;">
+                        <p>El valor total es la suma del valor que propone más el 2 porciento de comición para el
+                            vendendor</p>
+                        <p>Recuerde que el valor propuesto debe ser superior al valor base del vehiculo, de lo contrario no se trendrá en cuenta.</p>
+                        <form [formGroup]="form" class="border rounded p-3 form">
+                            <div class="form-group">
+                                <label for="email">Precio que propone pagar</label>
+                                <input formControlName="proposed_price" type="email" placeholder="precio"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Precio total a pagar</label>
+                                <input readonly formControlName="price_total" type="number" placeholder="precio"
+                                    class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-6 d-grid gap-1 mt-4">
+                                    <button (click)="bidding()" type="submit" class="btn btn-success btn-lg">
+                                        <i class="fa-solid fa-database"></i>Licitar</button>
+                                </div>
+                                <div class="col-6 d-grid gap-1 mt-4">
+                                    <button (click)="simulator()" type="submit" class="btn btn-success btn-lg">
+                                        <i class="fa-solid fa-database"></i>Simular</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
